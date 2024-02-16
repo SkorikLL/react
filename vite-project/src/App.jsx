@@ -1,36 +1,50 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import WelcomeMessage from "./components/WelcomeMessage";
+import Main from "./components/Main/Main";
+import PopBrowse from "./components/PopBrowse/PopBrowse";
+import PopExit from "./components/PopExit/PopExit";
+import PopNewCard from "./components/PopNewCard/PopNewCard";
+import Header from "./components/Header/Header";
+import Wrapper from "./components/Wrapper/Wrapper";
+import Column from "./components/Column/Column";
+import Cards from "./components/Cards/Cards";
+
+const userName = "Ivan Ivanov";
+const userEmail = "ivan.ivanov@gmail.com";
+const events = [
+  {
+    id: 0,
+    theme: "Web Design",
+    title: "Название задачи",
+    date: "30.10.23",
+  },
+  {
+    id: 1,
+    theme: "Research",
+    title: "Название задачи",
+    date: "30.10.23",
+  },
+  {
+    id: 2,
+    theme: "Web Design",
+    title: "Название задачи",
+    date: "30.10.23",
+  },
+];
 
 function App() {
-  const [count, setCount] = useState(0);
-  const userName = "Леонид";
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <WelcomeMessage name={userName} />
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Wrapper>
+        <PopExit />
+        <PopNewCard />
+        <PopBrowse />
+        <Header name={userName} email={userEmail} />
+        <Main>
+          <Column>
+            <Cards events={events} />
+          </Column>
+        </Main>
+      </Wrapper>
     </>
   );
 }
