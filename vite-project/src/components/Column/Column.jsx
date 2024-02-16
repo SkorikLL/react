@@ -1,4 +1,6 @@
-const columnTitle = [
+import Cards from "../Cards/Cards";
+
+const statusList = [
   "БЕЗ СТАТУСА",
   "НУЖНО СДЕЛАТЬ",
   "В РАБОТЕ",
@@ -6,15 +8,15 @@ const columnTitle = [
   "ГОТОВО",
 ];
 
-function Column({ children }) {
+function Column(props) {
   return (
     <>
-      {columnTitle.map((title) => (
+      {statusList.map((title) => (
         <div key={title} className="main__column">
           <div className="column__title">
             <p>{title}</p>
           </div>
-          {children}
+          <Cards events={props.cards} statusTitle={title}></Cards>
         </div>
       ))}
     </>

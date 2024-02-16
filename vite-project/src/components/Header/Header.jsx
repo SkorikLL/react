@@ -1,4 +1,13 @@
+import { useState } from "react";
+
 function Header(props) {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    // Для изменения состояния вызываем функцию setIsOpen и передаем новое
+    // значение в качестве аргумента.
+    setIsOpen((prevState) => !prevState);
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -14,29 +23,45 @@ function Header(props) {
             </a>
           </div>
           <nav className="header__nav">
-            <button className="header__btn-main-new _hover01" id="btnMainNew">
-              <a href="#popNewCard">Создать новую задачу</a>
+            <button
+              className="header__btn-main-new _hover01"
+              id="btnMainNew"
+              onClick={props.onCardAdd}
+            >
+              <a
+              //href="#popNewCard"
+              >
+                Создать новую задачу
+              </a>
             </button>
-            <a href="#user-set-target" className="header__user _hover02">
+            <a
+              href="#user-set-target"
+              className="header__user _hover02"
+              onClick={handleClick}
+            >
               {props.name || "Пользователь"}
             </a>
-            <div
-              className="header__pop-user-set pop-user-set"
-              id="user-set-target"
-            >
-              {/* <a href="">x</a> */}
-              <p className="pop-user-set__name">
-                {props.name || "Пользователь"}
-              </p>
-              <p className="pop-user-set__mail">{props.email || "-"}</p>
-              <div className="pop-user-set__theme">
-                <p>Темная тема</p>
-                <input type="checkbox" className="checkbox" name="checkbox" />
+            {/* Если isOpen (false) показываем окно, где
+            отображаются его имя и почта, иначе окно открыта и мы его скрываем */}
+            {isOpen && (
+              <div
+                className="header__pop-user-set pop-user-set"
+                id="user-set-target"
+              >
+                {/* <a href="">x</a> */}
+                <p className="pop-user-set__name">
+                  {props.name || "Пользователь"}
+                </p>
+                <p className="pop-user-set__mail">{props.email || "-"}</p>
+                <div className="pop-user-set__theme">
+                  <p>Темная тема</p>
+                  <input type="checkbox" className="checkbox" name="checkbox" />
+                </div>
+                <button type="button" className="_hover03">
+                  <a href="#popExit">Выйти</a>
+                </button>
               </div>
-              <button type="button" className="_hover03">
-                <a href="#popExit">Выйти</a>
-              </button>
-            </div>
+            )}
           </nav>
         </div>
       </div>

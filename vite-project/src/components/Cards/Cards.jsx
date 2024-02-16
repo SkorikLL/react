@@ -1,8 +1,12 @@
-
 function Cards(props) {
+  //Фильтр карточек по столбцам (пока фильтрую карточки со статусом "БЕЗ СТАТУСА" во все столбцы, нужно доработать!!!)
+  const eventsFilter = props.events.filter(
+    (card) => card.status === props.statusTitle
+  );
+  console.log(props.statusTitle);
   return (
     <>
-      {props.events.map((card) => (
+      {eventsFilter.map((card) => (
         <div className="cards" key={card.id}>
           <div className="cards__item">
             <div className="cards__card card">
