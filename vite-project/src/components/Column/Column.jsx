@@ -11,8 +11,8 @@ function Column({ children }) {
     <>
       {columnTitle.map((title) => (
         <div key={title} className="main__column">
-          <div key={title} className="column__title">
-            <p key={title}>{title}</p>
+          <div className="column__title">
+            <p>{title}</p>
           </div>
           {children}
         </div>
