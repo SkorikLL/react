@@ -9,6 +9,7 @@ import Wrapper from "./components/Wrapper/Wrapper";
 import Column from "./components/Column/Column";
 import { cardList } from "./data";
 import { useEffect, useState } from "react";
+import { GlobalStyle } from "./Global.styled.js";
 
 const userName = "Ivan Ivanov";
 const userEmail = "ivan.ivanov@gmail.com";
@@ -38,11 +39,13 @@ function App() {
 
   return (
     <>
+      <GlobalStyle />
       <Wrapper>
         <PopExit />
         <PopNewCard />
         <PopBrowse />
         <Header name={userName} email={userEmail} onCardAdd={onCardAdd} />
+
         {isLoading ? (
           <div className="container">Загрузка...</div>
         ) : (

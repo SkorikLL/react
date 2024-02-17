@@ -40,7 +40,7 @@
 .read-the-docs {
   color: #888;
 } */
-
+/* 
 * {
   margin: 0;
   padding: 0;
@@ -56,8 +56,8 @@ a,
 a:visited {
   text-decoration: none;
   cursor: pointer;
-}
-
+}  */
+/* 
 button,
 ._btn {
   cursor: pointer;
@@ -86,7 +86,7 @@ body {
   height: 100%;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: #000000;
-}
+} */
 
 .wrapper {
   max-width: 100%;
@@ -838,13 +838,13 @@ body {
   display: none;
 }
 
-.header {
+/* .header {
   width: 100%;
   margin: 0 auto;
   background-color: #FFFFFF;
-}
+} */
 
-.header__block {
+/* .header__block {
   height: 70px;
   display: flex;
   flex-wrap: nowrap;
@@ -854,19 +854,19 @@ body {
   top: 0;
   left: 0;
   padding: 0 10px;
-}
+} */
 
 .header__logo img {
   width: 85px;
 }
 
-.header__nav {
+/* .header__nav {
   max-width: 290px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .header__btn-main-new {
   width: 178px;
