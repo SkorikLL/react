@@ -3,7 +3,6 @@ function Cards(props) {
   const eventsFilter = props.events.filter(
     (card) => card.status === props.statusTitle
   );
-  console.log(props.statusTitle);
   return (
     <>
       {eventsFilter.map((card) => (

@@ -1,13 +1,13 @@
+import { Container } from "./Main.styled";
+
 function Main({ children }) {
   return (
     <main className="main">
-      <div className="container">
+      <Container>
         <div className="main__block">
-          <div className="main__content">
-            {children}
-          </div>
+          <div className="main__content">{children}</div>
         </div>
-      </div>
+      </Container>
     </main>
   );
 }

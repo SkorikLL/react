@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as S from "./Header.styled";
+import { Container } from "../Main/Main.styled";
 
 function Header({ name, onCardAdd, email }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,11 +8,12 @@ function Header({ name, onCardAdd, email }) {
     // Для изменения состояния вызываем функцию setIsOpen и передаем новое
     // значение в качестве аргумента.
     setIsOpen((prevState) => !prevState);
+    console.log(isOpen);
   }
 
   return (
     <S.Header>
-      <div className="container">
+      <Container>
         <S.HeaderBlock>
           <div className="header__logo _show _light">
             <a href="" target="_self">
@@ -35,22 +37,18 @@ function Header({ name, onCardAdd, email }) {
                 Создать новую задачу
               </a>
             </button>
-            {/* <a
-              href="#user-set-target"
+            <span
               className="header__user _hover02"
               onClick={handleClick}
-            ></a> */}
-            <span className="header__user _hover02" onClick={handleClick}>
+              style={{ cursor: "pointer" }}
+            >
               {name || "Пользователь"}
             </span>
-            {/* Если isOpen (false) показываем окно, где
-            отображаются его имя и почта, иначе окно открыта и мы его скрываем */}
             {isOpen && (
               <div
                 className="header__pop-user-set pop-user-set"
                 id="user-set-target"
               >
-                {/* <a href="">x</a> */}
                 <p className="pop-user-set__name">{name || "Пользователь"}</p>
                 <p className="pop-user-set__mail">{email || "-"}</p>
                 <div className="pop-user-set__theme">
@@ -64,7 +62,7 @@ function Header({ name, onCardAdd, email }) {
             )}
           </S.HeaderNav>
         </S.HeaderBlock>
-      </div>
+      </Container>
     </S.Header>
   );
 }
