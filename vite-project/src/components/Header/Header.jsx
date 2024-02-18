@@ -49,7 +49,7 @@ function Header({ name, onCardAdd, email }) {
                 className="header__pop-user-set pop-user-set"
                 id="user-set-target"
               >
-                <p className="pop-user-set__name">{name || "Пользователь"}</p>
+                <S.PopUserSetName>{name || "Пользователь"}</S.PopUserSetName>
                 <p className="pop-user-set__mail">{email || "-"}</p>
                 <div className="pop-user-set__theme">
                   <p>Темная тема</p>
