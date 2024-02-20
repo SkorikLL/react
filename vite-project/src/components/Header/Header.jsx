@@ -50,11 +50,11 @@ function Header({ name, onCardAdd, email }) {
                 id="user-set-target"
               >
                 <S.PopUserSetName>{name || "Пользователь"}</S.PopUserSetName>
-                <p className="pop-user-set__mail">{email || "-"}</p>
-                <div className="pop-user-set__theme">
+                <S.PopUserSetMail>{email || "-"}</S.PopUserSetMail>
+                <S.PopUserSetTheme>
                   <p>Темная тема</p>
                   <input type="checkbox" className="checkbox" name="checkbox" />
-                </div>
+                </S.PopUserSetTheme>
                 <button type="button" className="_hover03">
                   <a href="#popExit">Выйти</a>
                 </button>

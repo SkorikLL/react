@@ -1,4 +1,5 @@
 import Cards from "../Cards/Cards";
+import { ColumnTitle, MainColumn } from "./Column.styled";
 
 const statusList = [
   "БЕЗ СТАТУСА",
@@ -8,16 +9,16 @@ const statusList = [
   "ГОТОВО",
 ];
 
-function Column(props) {
+function Column({ cards }) {
   return (
     <>
       {statusList.map((title) => (
-        <div key={title} className="main__column">
-          <div className="column__title">
+        <MainColumn key={title}>
+          <ColumnTitle>
             <p>{title}</p>
-          </div>
-          <Cards events={props.cards} statusTitle={title}></Cards>
-        </div>
+          </ColumnTitle>
+          <Cards events={cards} statusTitle={title}></Cards>
+        </MainColumn>
       ))}
     </>
   );

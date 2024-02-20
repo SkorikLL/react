@@ -10,6 +10,7 @@ import Column from "./components/Column/Column";
 import { cardList } from "./data";
 import { useEffect, useState } from "react";
 import { GlobalStyle } from "./Global.styled.js";
+import { Container } from "./components/Main/Main.styled.js";
 
 const userName = "Ivan Ivanov";
 const userEmail = "ivan.ivanov@gmail.com";
@@ -45,9 +46,8 @@ function App() {
         <PopNewCard />
         <PopBrowse />
         <Header name={userName} email={userEmail} onCardAdd={onCardAdd} />
-
         {isLoading ? (
-          <div className="container">Загрузка...</div>
+          <Container>Загрузка...</Container>
         ) : (
           <Main>
             <Column cards={cards}>
