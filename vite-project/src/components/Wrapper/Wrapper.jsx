@@ -1,5 +1,7 @@
+import * as S from "./Wrapper.styled";
+
 function Wrapper({ children }) {
-  return <div className="wrapper">{children}</div>;
+  return <S.Wrapper>{children}</S.Wrapper>;
 }
 
 export default Wrapper;

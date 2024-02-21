@@ -1,8 +1,20 @@
-function Header(props) {
+import { useState } from "react";
+import * as S from "./Header.styled";
+import { Container } from "../Main/Main.styled";
+
+function Header({ name, onCardAdd, email }) {
+  const [isOpen, setIsOpen] = useState(false);
+  function handleClick() {
+    // Для изменения состояния вызываем функцию setIsOpen и передаем новое
+    // значение в качестве аргумента.
+    setIsOpen((prevState) => !prevState);
+    console.log(isOpen);
+  }
+
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__block">
+    <S.Header>
+      <Container>
+        <S.HeaderBlock>
           <div className="header__logo _show _light">
             <a href="" target="_self">
               <img src="public/logo.png" alt="logo" />
@@ -13,34 +25,45 @@ function Header(props) {
               <img src="public/logo_dark.png" alt="logo" />
             </a>
           </div>
-          <nav className="header__nav">
-            <button className="header__btn-main-new _hover01" id="btnMainNew">
-              <a href="#popNewCard">Создать новую задачу</a>
-            </button>
-            <a href="#user-set-target" className="header__user _hover02">
-              {props.name || "Пользователь"}
-            </a>
-            <div
-              className="header__pop-user-set pop-user-set"
-              id="user-set-target"
+          <S.HeaderNav>
+            <button
+              className="header__btn-main-new _hover01"
+              id="btnMainNew"
+              onClick={onCardAdd}
             >
-              {/* <a href="">x</a> */}
-              <p className="pop-user-set__name">
-                {props.name || "Пользователь"}
-              </p>
-              <p className="pop-user-set__mail">{props.email || "-"}</p>
-              <div className="pop-user-set__theme">
-                <p>Темная тема</p>
-                <input type="checkbox" className="checkbox" name="checkbox" />
+              <a
+              //href="#popNewCard"
+              >
+                Создать новую задачу
+              </a>
+            </button>
+            <span
+              className="header__user _hover02"
+              onClick={handleClick}
+              style={{ cursor: "pointer" }}
+            >
+              {name || "Пользователь"}
+            </span>
+            {isOpen && (
+              <div
+                className="header__pop-user-set pop-user-set"
+                id="user-set-target"
+              >
+                <S.PopUserSetName>{name || "Пользователь"}</S.PopUserSetName>
+                <S.PopUserSetMail>{email || "-"}</S.PopUserSetMail>
+                <S.PopUserSetTheme>
+                  <p>Темная тема</p>
+                  <input type="checkbox" className="checkbox" name="checkbox" />
+                </S.PopUserSetTheme>
+                <button type="button" className="_hover03">
+                  <a href="#popExit">Выйти</a>
+                </button>
               </div>
-              <button type="button" className="_hover03">
-                <a href="#popExit">Выйти</a>
-              </button>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
+            )}
+          </S.HeaderNav>
+        </S.HeaderBlock>
+      </Container>
+    </S.Header>
   );
 }
 

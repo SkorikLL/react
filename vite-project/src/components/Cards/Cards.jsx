@@ -1,28 +1,50 @@
+import * as S from "./Cards.styled";
 
-function Cards(props) {
+function Cards({ events, statusTitle }) {
+  //Фильтр карточек по столбцам (пока фильтрую карточки со статусом "БЕЗ СТАТУСА" во все столбцы, нужно доработать!!!)
+  const eventsFilter = events.filter((card) => card.status === statusTitle);
+  //let ColorTitleCard ="";
+
   return (
     <>
-      {props.events.map((card) => (
-        <div className="cards" key={card.id}>
-          <div className="cards__item">
+      {eventsFilter.map((card) => (
+        <S.Cards key={card.id}>
+          <S.CardsItem>
             <div className="cards__card card">
-              <div className="card__group">
-                <div className="card__theme _orange">
-                  <p className="_orange">{card.theme}</p>
-                </div>
+              <S.CardsGroup>
+                <S.CardTopic
+                  $topicColor={
+                    card.theme === "Web Design"
+                      ? "_orange"
+                      : card.theme === "Research"
+                      ? "_green"
+                      : card.theme === "Copywriting"
+                      ? "_purple"
+                      : "_gray"
+                  }
+                >
+                  <S.TopicText>{card.theme}</S.TopicText>
+                </S.CardTopic>
                 <a href="#popBrowse" target="_self">
-                  <div className="card__btn">
+                  <S.CardsBtn>
                     <div></div>
                     <div></div>
                     <div></div>
-                  </div>
+                  </S.CardsBtn>
                 </a>
-              </div>
-              <div className="card__content">
+              </S.CardsGroup>
+              <S.CardsContent>
                 <a href="" target="_blank">
-                  <h3 className="card__title">{card.title}</h3>
+                  <S.CardsTitle
+                    style={{
+                      textDecoration:
+                        statusTitle === "ГОТОВО" ? "line-through" : "none",
+                    }}
+                  >
+                    {card.title}
+                  </S.CardsTitle>
                 </a>
-                <div className="card__date">
+                <S.CardsDate>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="13"
@@ -52,11 +74,11 @@ function Cards(props) {
                     </defs>
                   </svg>
                   <p>{card.date}</p>
-                </div>
-              </div>
+                </S.CardsDate>
+              </S.CardsContent>
             </div>
-          </div>
-        </div>
+          </S.CardsItem>
+        </S.Cards>
       ))}
     </>
   );
