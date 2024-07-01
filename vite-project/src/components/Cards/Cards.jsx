@@ -1,16 +1,23 @@
+import { Link } from "react-router-dom";
 import * as S from "./Cards.styled";
 
 function Cards({ events, statusTitle }) {
+  // const colors = {
+  //   "Web Design": "_orange",
+  //   "Research": "_green",
+  //   "Copywriting": "_purple",
+  // };
+
   //Фильтр карточек по столбцам (пока фильтрую карточки со статусом "БЕЗ СТАТУСА" во все столбцы, нужно доработать!!!)
   const eventsFilter = events.filter((card) => card.status === statusTitle);
-  //let ColorTitleCard ="";
+ 
 
   return (
     <>
       {eventsFilter.map((card) => (
         <S.Cards key={card.id}>
           <S.CardsItem>
-            <div className="cards__card card">
+            <S.Card>
               <S.CardsGroup>
                 <S.CardTopic
                   $topicColor={
@@ -25,13 +32,14 @@ function Cards({ events, statusTitle }) {
                 >
                   <S.TopicText>{card.theme}</S.TopicText>
                 </S.CardTopic>
-                <a href="#popBrowse" target="_self">
+
+                <Link to={`/card/${card.id}`}>
                   <S.CardsBtn>
                     <div></div>
                     <div></div>
                     <div></div>
                   </S.CardsBtn>
-                </a>
+                </Link>
               </S.CardsGroup>
               <S.CardsContent>
                 <a href="" target="_blank">
@@ -76,7 +84,7 @@ function Cards({ events, statusTitle }) {
                   <p>{card.date}</p>
                 </S.CardsDate>
               </S.CardsContent>
-            </div>
+            </S.Card>
           </S.CardsItem>
         </S.Cards>
       ))}
