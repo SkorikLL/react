@@ -62,7 +62,7 @@ export const Hover03 = css`
     color: #ffffff;
   }
 `;
-export const PopUserSet = styled.div`
+export const PopUserSet = css`
   button {
     width: 72px;
     height: 30px;
@@ -82,8 +82,8 @@ export const PopUserSet = styled.div`
 
 export const colors = {
   "Web Design": "_orange",
-  "Research": "_green",
-  "Copywriting": "_purple",
+  Research: "_green",
+  Copywriting: "_purple",
 };
 
 export const Orange = css`
