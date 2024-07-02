@@ -1,8 +1,10 @@
 import { useState } from "react";
 import * as S from "./Header.styled";
 import { Container } from "../Main/Main.styled";
+import { Link } from "react-router-dom";
+import { AppRoutes } from "../../lib/appRoutes";
 
-function Header({ name, onCardAdd, email }) {
+function Header({ name, onCardAdd, email, changeTheme, setChangeTheme }) {
   const [isOpen, setIsOpen] = useState(false);
   function handleClick() {
     // Для изменения состояния вызываем функцию setIsOpen и передаем новое
@@ -10,6 +12,10 @@ function Header({ name, onCardAdd, email }) {
     setIsOpen((prevState) => !prevState);
     console.log(isOpen);
   }
+
+  const onchangeTheme = () => {
+    setChangeTheme(changeTheme === "light" ? "dark" : "light");
+  };
 
   return (
     <S.Header>
@@ -26,39 +32,33 @@ function Header({ name, onCardAdd, email }) {
             </a>
           </div>
           <S.HeaderNav>
-            <button
-              className="header__btn-main-new _hover01"
-              id="btnMainNew"
-              onClick={onCardAdd}
-            >
+            <S.HeaderBtnMainNew id="btnMainNew" onClick={onCardAdd}>
               <a
               //href="#popNewCard"
               >
                 Создать новую задачу
               </a>
-            </button>
-            <span
-              className="header__user _hover02"
-              onClick={handleClick}
-              style={{ cursor: "pointer" }}
-            >
+            </S.HeaderBtnMainNew>
+            <S.HeaderUser onClick={handleClick} style={{ cursor: "pointer" }}>
               {name || "Пользователь"}
-            </span>
+            </S.HeaderUser>
             {isOpen && (
-              <div
-                className="header__pop-user-set pop-user-set"
-                id="user-set-target"
-              >
+              <S.HeaderPopUserSet id="user-set-target">
                 <S.PopUserSetName>{name || "Пользователь"}</S.PopUserSetName>
                 <S.PopUserSetMail>{email || "-"}</S.PopUserSetMail>
                 <S.PopUserSetTheme>
                   <p>Темная тема</p>
-                  <input type="checkbox" className="checkbox" name="checkbox" />
+                  <input
+                    checked={changeTheme === "dark"}
+                    onClick={onchangeTheme}
+                    type="checkbox"
+                    name="checkbox"
+                  />
                 </S.PopUserSetTheme>
-                <button type="button" className="_hover03">
-                  <a href="#popExit">Выйти</a>
+                <button type="button">
+                  <Link to={AppRoutes.EXIT}>Выйти</Link>
                 </button>
-              </div>
+              </S.HeaderPopUserSet>
             )}
           </S.HeaderNav>
         </S.HeaderBlock>

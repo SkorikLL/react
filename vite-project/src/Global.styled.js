@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -28,17 +28,6 @@ ul li {
   list-style: none;
 }
 
-@keyframes card-animation {
-  0% {
-    height: 0;
-    opacity: 0;
-  }
-
-  100% {
-    height: auto;
-    opacity: 1;
-  }
-}
 
 html,
 body {
@@ -47,4 +36,72 @@ body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: #000000;
 }
+`;
+
+export const Hover01 = css`
+  &:hover {
+    background-color: #33399b;
+  }
+`;
+export const Hover02 = css`
+  &:hover {
+    color: #33399b;
+  }
+  &:after {
+    border-left-color: #33399b;
+    border-bottom-color: #33399b;
+  }
+`;
+
+export const Hover03 = css`
+  &:hover {
+    background-color: #33399b;
+    color: #ffffff;
+  }
+  &:hover a {
+    color: #ffffff;
+  }
+`;
+export const PopUserSet = css`
+  button {
+    width: 72px;
+    height: 30px;
+    background: transparent;
+    color: #565eef;
+    border-radius: 4px;
+    border: 1px solid #565eef;
+    ${Hover03}
+  }
+  button a {
+    color: #565eef;
+  }
+  &:target {
+    display: block;
+  }
+`;
+
+export const colors = {
+  "Web Design": "_orange",
+  Research: "_green",
+  Copywriting: "_purple",
+};
+
+export const Orange = css`
+  background-color: ${({ theme }) => theme.orangeBd};
+  color: ${({ theme }) => theme.orangeText};
+`;
+
+export const Green = css`
+  background-color: ${({ theme }) => theme.greenBd};
+  color: ${({ theme }) => theme.greenText};
+`;
+
+export const Purple = css`
+  background-color: ${({ theme }) => theme.purpleBd};
+  color: ${({ theme }) => theme.purpleText};
+`;
+
+export const Gray = css`
+  background: ${({ theme }) => theme.grayBd};
+  color: ${({ theme }) => theme.grayText};
 `;
